@@ -4,17 +4,18 @@ from PIL import Image
 from pathlib import Path
 import tensorflow as tf
 
-# Keep this file in the same folder as model.keras.
-MODEL_PATH = Path(__file__).parent / "model.keras"
 
-# IMPORTANT:
-# These labels must match the order used when the model was trained.
-# If you trained with ImageDataGenerator.flow_from_directory(), check:
-# print(train_generator.class_indices)
-# For alphabetically named folders Healthy, Powdery, Rust, this order is:
+
+# Get the project root directory
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+# Load the model from the Model directory
+MODEL_PATH = PROJECT_ROOT / "Model" / "model.keras"
+
+
 CLASS_NAMES = ["Healthy", "Powdery", "Rust"]
 
-IMAGE_SIZE = (225, 225)  # Read from the uploaded model's input shape.
+IMAGE_SIZE = (225, 225)  
 
 st.set_page_config(
     page_title="Leaf Disease Detection",
